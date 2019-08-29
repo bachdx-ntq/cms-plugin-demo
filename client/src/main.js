@@ -1,8 +1,7 @@
 import Vue from 'vue'
-import App from './App.vue'
+import wrap from '@vue/web-component-wrapper';
+import MyWebComponent from './App';
 
-Vue.config.productionTip = false
+const WrappedElement = wrap(Vue, MyWebComponent);
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+window.customElements.define('my-web-component', WrappedElement);
