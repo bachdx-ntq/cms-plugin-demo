@@ -1,3 +1,4 @@
+// https://medium.com/js-dojo/how-to-configure-webpack-4-with-vuejs-a-complete-guide-209e943c4772
 var path = require('path');
 var webpack = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
@@ -21,12 +22,13 @@ module.exports = {
                     ecma: 6,
                     mangle: true
                 },
-                sourceMap: true
+                sourceMap: false
             })
         ]
     },
     plugins: [
         new VueLoaderPlugin(),
+        // https://medium.com/@glennreyes/how-to-disable-code-splitting-in-webpack-1c0b1754a3c5
         new webpack.optimize.LimitChunkCountPlugin({
             maxChunks: 1,
         }),
