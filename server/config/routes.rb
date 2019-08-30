@@ -2,10 +2,13 @@
 
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
-    resources :top, only: [:index]
+    namespace :plugin do
+      resources :app, only: [:index]
+      resources :top, only: [:index]
 
-    resources :companies, only: [:show] do
-      resources :cultures, only: %i[index show]
+      resources :companies, only: [:show] do
+        resources :cultures, only: %i[index show]
+      end
     end
   end
 end
